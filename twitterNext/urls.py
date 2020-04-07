@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from splash.views import splash
+from core.views import splash
 
 urlpatterns = [
     path('admin/', admin.site.urls),

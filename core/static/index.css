@@ -5,9 +5,7 @@ body {
   min-height: 100vh;
   background-color: #001327 !important;
 }
-.navbar-dark {
-  background-color: #001327ab !important;
-}
+
 .list {
   padding: 1% 75px 10px 30px;
   margin-left: 10%;
@@ -56,6 +54,11 @@ h1 {
   color: white !important;
   opacity: 100%;
   font-weight: 100 !important;
+}
+
+.navbar {
+  /* background: none; */
+  background-color: #001327 !important;
 }
 
 .btn-info {

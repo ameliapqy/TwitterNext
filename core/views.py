@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 # Create your views here.
 def splash(request):
-    if request.method is "POST":
+    if request.method == "POST":
         print("splash post request")
         body = request.POST["body"]
         print(body)
@@ -43,5 +43,5 @@ def signup_view(request):
     if request.method == "POST":
         user = User.objects.create_user(username=request.POST['username'], email=request.POST['email'], password=request.POST['password'])
         login(request, user)
-        return redirect('/')
+        return redirect('/login/')
     return render(request, 'signup.html', {})

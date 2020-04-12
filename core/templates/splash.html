@@ -5,16 +5,11 @@
     <meta charset="utf-8" />
 
     <title>TwitterNext</title>
-    <script
-      src="https://code.jquery.com/jquery-1.12.3.min.js"
-      integrity="sha384-ugqypGWrzPLdx2zEQTF17cVktjb01piRKaDNnbYGRSxyEoeAm+MKZVtbDUYjxfZ6"
-      crossorigin="anonymous"
-    ></script>
     <meta name="description" content="Twitter Clone" />
     <meta name="author" content="PQY" />
     {% load static %}
 
-    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}"> -->
     <!-- bootstrap -->
     <link
       rel="stylesheet"
@@ -24,22 +19,22 @@
     />
   </head>
 
-  <body>
-    <nav class="navbar">Test</nav>
+  <body class="bg-dark">
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Twitter Next</a>
+      <a class="navbar-brand" href="/home">Twitter Home</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">
-              Home <span class="sr-only">(current)</span></a>
+           <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="/splash">
+              Splash <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Profile</a>
@@ -47,11 +42,14 @@
           <li class="nav-item">
              <a class="nav-link" href="#">Hashtag</a>
           </li>
+           <li class="nav-item">
+            <a class="nav-link" href="/signout">Signout</a>
+          </li>
         </ul>
       </div>
     </nav>
 
-    <div class="jumbotron">
+    <div class="jumbotron" style="background-image: url(static/bkg.jpg);">
       <div class="mx-auto dark" style="width: 50%;">
         <h1 class="display-3">Twitter Next</h1>
         <p class="lead">
@@ -68,16 +66,15 @@
       </div>
     </div>
   {% for tweet in tweets %}
-    <div class="card mx-auto" style="width: 80%;">
-      <div class="card-body">
-        <!-- <h5 class="card-title">Card title</h5> -->
-        <h6 class="card-subtitle mb-2 text-muted">{{tweet.author}}</h6>
-        <p class="card-text">{{tweet.body}}</p>
-        <a href="#" class="card-link">Hashtag</a>
-      </div>
+    <div class="card mx-auto text-white bg-dark mb-3" style="width: 80%;">
+      <h6 class="card-header mb-2 text-muted">{{tweet.author}}</h6>
+        <div class="card-body">
+          <p class="card-text">{{tweet.body}}</p>
+        </div>
     </div>
   {%endfor%}  
 <!-- 
     <script src="js/scripts.js"></script> -->
+  
   </body>
 </html>

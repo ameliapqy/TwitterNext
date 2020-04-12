@@ -16,13 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from core.views import splash
-from core.views import login_view, signup_view, logout_view
+from core.views import login_view, signup_view, logout_view, home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', splash, name='home'),
-    path('splash/', splash, name='splash'),
+    path('', login_view, name='login'),
+    path('home/', splash, name='splash'),
     path('login/', login_view, name='login'),
     path('signup/', signup_view, name='signup'),
-    path('logout/', logout_view, name='account')
+    path('signout/', logout_view, name='login'),
+    path('splash/', home, name='about')
 ]

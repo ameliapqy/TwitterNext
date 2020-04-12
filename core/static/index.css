@@ -1,33 +1,3 @@
-body {
-  /* justify-content: center; */
-  /* align-items: center; */
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  min-height: 100vh;
-  background-color: #001327 !important;
-}
-
-.list {
-  padding: 1% 75px 10px 30px;
-  margin-left: 10%;
-  margin-right: 10%;
-  position: relative;
-  background: #131935;
-  overflow-wrap: break-word;
-  /* border-radius: 5%; */
-}
-
-.list label {
-  position: relative;
-  display: block !important;
-  margin: 3% 20%;
-  color: rgb(95, 95, 95);
-  font-size: 18px;
-  cursor: pointer;
-  font-weight: lighter;
-  border-radius: 24px;
-  border-spacing: 5px;
-  overflow-wrap: break-word;
-}
 
 
 .jumbotron {
@@ -40,47 +10,8 @@ body {
   border-radius: 0px !important;
 }
 
-.dark {
-  background-image: url("bkg.jpg")  !important;
-  background-color: #070c1b !important;
-}
-
-.lead {
-  color: white !important;
-  opacity: 100%;
-}
-
 h1 {
   color: white !important;
   opacity: 100%;
   font-weight: 100 !important;
-}
-
-.navbar {
-  /* background: none; */
-  background-color: #001327 !important;
-}
-
-.btn-info {
-  background-color: #4a7db8 !important;
-  border-width: 0pt !important;
-  outline: 0pt !important;
-  border-radius: 24px !important;
-}
-
-.btn-info:hover {
-  background-color: #193c88 !important;
-  border-color: #223d77 !important;
-  border-width: 0pt !important;
-}
-
-.btn-info:focus {
-  background-color: #05205a !important;
-  border-color: #152d61 !important;
-  border-width: 0pt !important;
-  outline: 0pt !important;
-}
-
-p {
-  background-color: #070c1b !important;
 }

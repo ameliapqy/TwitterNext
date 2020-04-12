@@ -20,8 +20,9 @@ from core.views import login_view, signup_view, logout_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', splash, name='splash'),
-    path('login/', login_view, name='account'),
-    path('signup/', signup_view, name='account'),
+    path('', splash, name='home'),
+    path('splash/', splash, name='splash'),
+    path('login/', login_view, name='login'),
+    path('signup/', signup_view, name='signup'),
     path('logout/', logout_view, name='account')
 ]

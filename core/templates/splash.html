@@ -50,22 +50,32 @@
       </div>
     </nav>
 
-    <div class="jumbotron">
-      <div class="mx-auto" style="width: 50%;">
+    <div class="jumbotron" background-color="#070c1b">
+      <div class="mx-auto dark" style="width: 50%;">
         <h1 class="display-3">Twitter Next</h1>
         <p class="lead">
           The Future of Twitter
         </p>
-        <form id="form input" method="POST" action="/">
+        <form method="POST" action="/splash/">
           {% csrf_token %}
           <div class="form-group">
             <input name="body" class="form-control" placeholder="What's happening?" />
           </div>
-          <button type="submit" class="btn btn-info"> Tweet </button>
-          </div>
+          <button type="submit" formmethod="post" class="btn btn-info"> Tweet </button>
+        </div>
         </form>
       </div>
     </div>
+  {% for tweet in tweets %}
+    <div class="card mx-auto" style="width: 80%;">
+      <div class="card-body">
+        <!-- <h5 class="card-title">Card title</h5> -->
+        <h6 class="card-subtitle mb-2 text-muted">{{tweet.author}}</h6>
+        <p class="card-text">{{tweet.body}}</p>
+        <a href="#" class="card-link">Hashtag</a>
+      </div>
+    </div>
+  {%endfor%}  
 <!-- 
     <script src="js/scripts.js"></script> -->
   </body>

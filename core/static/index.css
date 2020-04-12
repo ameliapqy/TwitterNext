@@ -4,7 +4,9 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   min-height: 100vh;
 }
-
+.navbar-dark {
+  background-color: rgba(255, 0, 242, 0.2) !important;
+}
 .list {
   padding: 1% 75px 10px 30px;
   margin-left: 10%;
@@ -51,21 +53,21 @@ h1 {
 }
 
 .btn-info {
-  background-color: #062058 !important;
-  border-color: #0e2557 !important;
-  border-width: 2pt !important;
+  background-color: #4a7db8 !important;
+  border-width: 0pt !important;
   outline: 0pt !important;
+  border-radius: 24px !important;
 }
 
 .btn-info:hover {
-  background-color: #0d2a69 !important;
+  background-color: #193c88 !important;
   border-color: #223d77 !important;
-  border-width: 2pt !important;
+  border-width: 0pt !important;
 }
 
 .btn-info:focus {
   background-color: #05205a !important;
   border-color: #152d61 !important;
-  border-width: 2pt !important;
+  border-width: 0pt !important;
   outline: 0pt !important;
 }

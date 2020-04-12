@@ -16,8 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from core.views import splash
+from core.views import login_view, signup_view, logout_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', splash, name='splash')
+    path('', splash, name='splash'),
+    path('login/', login_view, name='account'),
+    path('signup/', signup_view, name='account'),
+    path('logout/', logout_view, name='account')
 ]

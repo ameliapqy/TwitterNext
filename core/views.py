@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from core.models import Tweet
+from core.models import Tweet, Hashtag
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 # Create your views here.
@@ -7,7 +7,8 @@ def home(request):
     if request.method == "POST":
         if str(request.user)!="AnonymousUser":
             body = request.POST["body"]
-            Tweet.objects.create(body=body, author=request.user)
+            tweet = Tweet.objects.create(body=body, author=request.user)
+            getHashtags(tweet, request)
         else:
             return render(request, "home.html", {"tweets" : tweets, "user": request.user, "valid": False})
     tweets = Tweet.objects.order_by("created_at").reverse()
@@ -20,19 +21,50 @@ def profile(request):
     if request.method == "POST":
         body = request.POST["body"]
         Tweet.objects.create(body=body, author=request.user)
-    tweets = Tweet.objects.order_by("created_at").reverse()
-    return render(request, "profile.html", {"tweets" : tweets})
+    tweets = Tweet.objects.filter(author=request.user).order_by("created_at").reverse()
+    return render(request, "profile.html", {"tweets" : tweets, "user": request.user, "valid": True})
+
+
+def getHashtags(t, request):
+    #parse hashtags
+    names = [c for c in t.body.split() if c.startswith('#')]
+    for name in names:
+        hashtag = Hashtag.objects.filter(name=name)
+        if hashtag.exists():
+            tweets = hashtag[0].tweets
+            tweets.add(t)
+        else:
+            print("add hashtag: " + name)
+            h1 = Hashtag(name=name)
+            h1.save()
+            h1.tweets.add(t)
+
+def hashtagAll(request):
+    hashtags = Hashtag.objects.all()
+    return render(request, "hashtag.html", {"hashtags" : hashtags})
 
 def hashtag(request):
-    hashtag = Hashtag.objects.get(name=request.GET['name'])
-    return render(request, "profile.html", {"hashtag" : hashtag})
+    hashtags = Hashtag.objects.get(name=request.GET['name'])
+    return render(request, "hashtag.html", {"hashtags" : hashtags})
 
 def delete(request):
     tweet = Tweet.objects.get(id=request.GET['id'])
     if request.user == tweet.author:
         tweet.delete()
+        #check if hashtag exist
+        for hashtag in Hashtag.objects.all():
+            if not hashtag.tweets.exists():
+                hashtag.delete()
     else:
         print("no authorization!")
+    return redirect("/home/")
+
+def like(request):
+    tweet = Tweet.objects.get(id=request.GET['id'])
+    if request.user not in tweet.likes:
+        tweet.likes.add(request.user)
+    else:
+        tweet.likes.delete(request.user)
     return redirect("/home/")
 
 def deletep(request):

@@ -19,7 +19,8 @@
     />
   </head>
 
-  <body class="black2">
+  <body class="black">
+    
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
       <a class="navbar-brand active" href="/home">TwitterNext</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +32,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/home">Home</a>
           </li>
-           <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
           </li>
           <li class="nav-item">
@@ -42,6 +43,7 @@
           </li>
           <li class="nav-item active">
              <a class="nav-link" href="/hashtag">Hashtag</a>
+              <span class="sr-only">(current)</span></a>
           </li>
            <li class="nav-item">
             <a class="nav-link" href="/signout">Signout</a>
@@ -50,33 +52,21 @@
       </div>
     </nav>
 
-    <div class="jumbotron bg-transparent">
-      <div class="mx-auto dark" style="width: 50%; border-radius: 0px;">
-        <p class="muted-text">
-        Hi lovely, you are loggined as: <em>{{user}}</em>. <a href="/signout";"><small><u>logout</u></small></a>
-        <br>
-         </p>
-        <form method="POST" action="/home/">
-          {% csrf_token %}
-          <div class="form-group">
-            <input name="body" class="form-control" placeholder="What's happening?" />
-          </div>
-          <button type="submit" formmethod="post" class="btn btn-info"> Tweet </button>
-        </form>
-      </div>
-    </div>
+  <h1 class="text-center my-5"> All Hashtags </h1>
+  {% for hashtag in hashtags %}
+    <h1 class="ml-5 pl-5 mt-5"> {{hashtag.name}} </h1>
+    {% for tweet in hashtag.tweets.all %}
+    <div class="card mx-auto text-white bg-dark mb-3" style="width: 70%;">
 
-  {% for tweet in tweets %}
-    <div class="card mx-auto text-white bg-dark mb-3" style="width: 80%;">
-
-      <h6 class="card-header font-weight-light mb-2 align-text-bottom">
-        <b class = "font-weight-bold">{{tweet.author}}   </b><small class="text-muted">at: {{tweet.created_at}}</small>
-        <a class="close text-muted" href="/deletep?id={{tweet.id}}"><small>x</small></a>
+      <h6 class="card-header font-weight-light mb-0 align-text-bottom">
+        <b class = "font-weight-bold">{{hashtag.name}}   </b><small class="text-muted">by: {{tweet.author}}</small>
+        <a class="close text-muted" href="/delete?id={{tweet.id}}"><small>x</small></a>
       </h6>
       <div class="card-body">
         <p class="card-text">{{tweet.body}}</p>
       </div>
     </div>
   {%endfor%}  
+    {%endfor%}  
   </body>
 </html>

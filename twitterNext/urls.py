@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from core.views import home, delete, deletep, hashtag
+from core.views import home, delete, deletep, hashtag, hashtagAll, like
 from core.views import login_view, signup_view, logout_view, about, profile
 
 urlpatterns = [
@@ -29,5 +29,7 @@ urlpatterns = [
     path('profile/', profile, name='profile'),
     path('delete/', delete, name='home'),
     path('deletep/', deletep, name='home'),
-    path('hashtag/', hashtag, name='hashtag')
+    path('hashtagp/', hashtag, name='hashtag'),
+    path('hashtag/', hashtagAll, name='hashtag'),
+    path('like/', like, name='home')
 ]

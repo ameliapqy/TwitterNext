@@ -30,3 +30,7 @@ u {
   opacity: 100%;
   font-weight: 100 !important;
 }
+
+small {
+  text-align: right;
+}

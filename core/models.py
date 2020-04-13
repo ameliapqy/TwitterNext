@@ -7,17 +7,16 @@ class Tweet(models.Model):
     # body = models.TextField()
     created_at = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+
     def __str__(self):
         return self.body
 
-    def __init__(self):
+    def __init__(self, request, body, created_at, author):
         #parse hashtags
-        for char in self.body:
-            name = ""
-            if char=='#':
-                while char != ' ':
-                    name += char
-            if Hashtag.object.filter(name=name).exists():
+        names = [c for c in self.body.split() if c.startswith('#')]
+        for name in names:
+            hashtag = Hashtag.object.filter(name=name)
+            if hashtag.exists():
                 Hashtag.object.filter(name=name).tweets.add(self)
             else:
                 print("add hashtag: " + name)

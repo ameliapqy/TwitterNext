@@ -1,0 +1,32 @@
+.black{
+    background-image: url("m1.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: black;
+}
+
+.black2{
+    background-image: url("moon3.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: black;
+}
+
+
+h1 {
+  color: white !important;
+  opacity: 100%;
+  font-weight: 100 !important;
+}
+
+p {
+  color: white !important;
+  opacity: 100%;
+  font-weight: 100 !important;
+}
+
+u {
+  color: rgb(194, 194, 194) !important;
+  opacity: 100%;
+  font-weight: 100 !important;
+}

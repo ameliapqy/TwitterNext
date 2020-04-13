@@ -1,10 +1,11 @@
 body{
     margin: 0;
     padding: 0;
-    font-family: "Courier New", Courier, monospace;
+    font-family: Verdana, sans-serif;
     background-image: url("moon.png");
     background-size: 100%;
     background-repeat: repeat;
+    background-position: center center;
 }
 
 .box{
@@ -22,7 +23,6 @@ body{
     color: rgba(6, 255, 255, 0.774);
     text-transform: uppercase;
     font-weight: 100;
-    font: Avenir;
 }
 .box input[type = "text"], .box input[type = "password"] {
     border:0;

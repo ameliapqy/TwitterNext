@@ -9,7 +9,7 @@
     <meta name="author" content="PQY" />
     {% load static %}
 
-    <!-- <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'new.css' %}">
     <!-- bootstrap -->
     <link
       rel="stylesheet"
@@ -19,26 +19,26 @@
     />
   </head>
 
-  <body class="bg-dark">
-    
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="/home">Home</a>
+  <body class="black2">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+      <a class="navbar-brand active" href="/home">TwitterNext</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/home">Home</a>
+          </li>
            <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/about">
-              About <span class="sr-only"></span></a>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/profile">
-              Profile <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/profile">Profile</a>
           </li>
           <li class="nav-item">
              <a class="nav-link" href="#">Hashtag</a>
@@ -50,22 +50,33 @@
       </div>
     </nav>
 
-    <form method="POST" action="/profile/" class="text-right my-5" >
+    <div class="jumbotron bg-transparent">
+      <div class="mx-auto dark" style="width: 50%; border-radius: 0px;">
+        <p class="muted-text">
+        Hi lovely, you are loggined as: <em>{{user}}</em>. <a href="/signout";"><small><u>logout</u></small></a>
+        <br>
+         </p>
+        <form method="POST" action="/home/">
           {% csrf_token %}
-          <div class="form-group mx-auto" style="width: 60%;">
-            <input name="body" class="form-control my-3" placeholder="What's happening?" />
-          <button type="submit" class="btn btn-info text-right"> Tweet </button>
+          <div class="form-group">
+            <input name="body" class="form-control" placeholder="What's happening?" />
           </div>
-    </form>
+          <button type="submit" formmethod="post" class="btn btn-info"> Tweet </button>
+        </form>
+      </div>
+    </div>
 
   {% for tweet in tweets %}
     <div class="card mx-auto text-white bg-dark mb-3" style="width: 80%;">
-      <h6 class="card-header mb-2 text-muted">{{tweet.author}}</h6>
-        <div class="card-body">
-          <p class="card-text">{{tweet.body}}</p>
-        </div>
+
+      <h6 class="card-header font-weight-light mb-2 align-text-bottom">
+        <b class = "font-weight-bold">{{tweet.author}}   </b><small class="text-muted">at: {{tweet.created_at}}</small>
+        <a class="close text-muted" href="/deletep?id={{tweet.id}}"><small>x</small></a>
+      </h6>
+      <div class="card-body">
+        <p class="card-text">{{tweet.body}}</p>
+      </div>
     </div>
   {%endfor%}  
-  
   </body>
 </html>

@@ -1,13 +1,8 @@
-.jumbotron {
-  background-image: url("bkg.jpg")  !important;
-  opacity: 100% !important;
-  background-size: 100% !important;
-  background-position-y: 15%;
-  background-repeat: repeat;
-  border-radius: 0px !important;
-  min-height: 550px !important;
-  padding: 5em inherit;
-  
+.black{
+    background-image: url("bkg.jpg") !important;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: black;
 }
 
 h1 {

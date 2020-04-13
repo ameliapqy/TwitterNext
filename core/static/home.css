@@ -1,3 +1,11 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Courier New", Courier, monospace;
+    background-image: url("moon2.jpg");
+    background-size: 100%;
+    background-repeat: repeat;
+}
 .jumbotron {
   background-color: rgba(0, 0, 0, 0.432);
   background-image: url("bkg.jpg")  !important;

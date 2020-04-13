@@ -1,0 +1,29 @@
+.jumbotron {
+  background-color: rgba(0, 0, 0, 0.432);
+  background-image: url("bkg.jpg")  !important;
+  opacity: 60% !important;
+  background-size: 100% !important;
+  background-position-y: 15%;
+  background-repeat: repeat;
+  border-radius: 0px !important;
+  min-height: 300 !important;
+  padding: 5em inherit;
+}
+
+h1 {
+  color: white !important;
+  opacity: 100%;
+  font-weight: 100 !important;
+}
+
+p {
+  color: white !important;
+  opacity: 100%;
+  font-weight: 100 !important;
+}
+
+a {
+  color: rgb(255, 255, 255) !important;
+  opacity: 100%;
+  font-weight: 100 !important;
+}

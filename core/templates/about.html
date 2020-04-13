@@ -9,7 +9,7 @@
     <meta name="author" content="PQY" />
     {% load static %}
 
-    <!-- <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'about.css' %}">
     <!-- bootstrap -->
     <link
       rel="stylesheet"
@@ -21,7 +21,7 @@
 
   <body class="bg-dark">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="/home">Twitter Home</a>
+      <a class="navbar-brand" href="/home">Home</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -32,11 +32,11 @@
             <a class="nav-link" href="/login">Login</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/splash">
-              Splash <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/about">
+              About <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
+            <a class="nav-link" href="/profile">Profile</a>
           </li>
           <li class="nav-item">
              <a class="nav-link" href="#">Hashtag</a>
@@ -47,5 +47,15 @@
         </ul>
       </div>
     </nav>
+
+
+    <div class="jumbotron">
+      <div class="mx-auto dark" style="width: 50%;">
+        <h1 class="display-3 text-white">Twitter Next</h1>
+        <p class="lead text-white">
+          The Future of Twitter. Have fun Tweeting!
+        </p>
+      </div>
+    </div>
   </body>
 </html>

@@ -5,28 +5,32 @@ from django.contrib.auth.models import User
 # Create your views here.
 def splash(request):
     if request.method == "POST":
-        body = request.POST["body"]
-        Tweet.objects.create(body=body, author=request.user)
+        if str(request.user)!="AnonymousUser":
+            body = request.POST["body"]
+            Tweet.objects.create(body=body, author=request.user)
+        else:
+            return render(request, "splash.html", {"tweets" : tweets, "user": request.user, "valid": False})
     tweets = Tweet.objects.all()
-    return render(request, "splash.html", {"tweets" : tweets})
+    return render(request, "splash.html", {"tweets" : tweets, "user": request.user, "valid": True})
 
-def home(request):
-    if request.method == "POST":
-        body = request.POST["body"]
-        Tweet.objects.create(body=body, author=request.user)
-    tweets = Tweet.objects.all()
-    return render(request, "home.html", {"tweets" : tweets})
+def about(request):
+    return render(request, "about.html", {})
 
 def profile(request):
     if request.method == "POST":
         body = request.POST["body"]
         Tweet.objects.create(body=body, author=request.user)
-    tweets = Tweet.objects.filter(author=req)
+    tweets = Tweet.objects.filter(author=request.user)
     return render(request, "profile.html", {"tweets" : tweets})
 
 def delete(request):
-        tweet = Tweet.objects.get(id=request.GET['id'])
+    print("requested!")
+    tweet = Tweet.objects.get(id=request.GET['body'])
+    if request.user == tweet.author:
         tweet.delete()
+    else:
+        print("no authorization!")
+    return render(request, "splash.html", {"tweets" : tweets})
 
 def login_view(request):
     if request.method == "POST":
@@ -37,7 +41,7 @@ def login_view(request):
         if user is not None:
             login(request, user)
             print("redirecting")
-            return redirect("/splash/")
+            return redirect("/home/")
         else: 
             return render(request, 'login.html', {"isValid":False})
     else:

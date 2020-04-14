@@ -2,10 +2,10 @@ body{
     margin: 0;
     padding: 0;
     font-family: Verdana, sans-serif;
-    background-image: url("moon.png");
+    background-image: url("bkg2.jpg");
     background-size: 100%;
     background-repeat: repeat;
-    background-position: center center;
+    background-position: center 0%;
 }
 
 .box{
@@ -22,7 +22,10 @@ body{
 .box h1{
     color: rgba(6, 255, 255, 0.774);
     text-transform: uppercase;
-    font-weight: 100;
+    font-weight: 50;
+    /* font-family: 'Raleway', sans-serif; */
+    font-family: 'Megrim', cursive;
+    font-size: xx-large;
 }
 .box input[type = "text"], .box input[type = "password"] {
     border:0;

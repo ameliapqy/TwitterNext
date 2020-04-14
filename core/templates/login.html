@@ -5,12 +5,14 @@
     <meta charset="utf-8">
     <title>Log-in</title>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'account.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap" rel="stylesheet">
   </head>
   <body>
 
     <form method="POST" class = "box" action="/login/">
-        <h1><lighter>Login</lighter></h1>
+        <h1>Login</h1>
         {% csrf_token %}
         {% if not isValid %}
         <p type="incorrect">incorrect username/password.</p>

@@ -18,15 +18,14 @@ def about(request):
     return render(request, "about.html", {})
 
 def profile(request):
-    if request.method == "POST":
-        body = request.POST["body"]
-        Tweet.objects.create(body=body, author=request.user)
+    if str(request.user)=="AnonymousUser":
+        return render(request, "profile.html", {"tweets" : [], "user": request.user, "valid": False})
     tweets = Tweet.objects.filter(author=request.user).order_by("created_at").reverse()
     return render(request, "profile.html", {"tweets" : tweets, "user": request.user, "valid": True})
 
 
 def getHashtags(t, request):
-    #parse hashtags
+    #parse hashtags and return an array with hashtags and tweets
     names = [c for c in t.body.split() if c.startswith('#')]
     for name in names:
         hashtag = Hashtag.objects.filter(name=name)
@@ -38,6 +37,23 @@ def getHashtags(t, request):
             h1 = Hashtag(name=name)
             h1.save()
             h1.tweets.add(t)
+
+def parseTweet(text, request):
+    parsedText = [] #(text, isHashtag)
+    for char in text:
+        if char == '#':
+            hashName = ''
+            while(char != ' '):
+                hashName += char
+            #get hashtag
+            parsedText.append(hashName, True)
+        else:
+            bodyName = ''
+            while(char != ' '):
+                bodyName += char
+            parsedText.append(body, False)
+    return parsedText
+
 
 def hashtagAll(request):
     hashtags = Hashtag.objects.all()

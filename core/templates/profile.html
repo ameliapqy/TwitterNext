@@ -53,18 +53,13 @@
 
     <div class="jumbotron bg-transparent">
       <div class="mx-auto dark" style="width: 50%; border-radius: 0px;">
-        <p class="muted-text">
-        Hi lovely, you are loggined as: <em>{{user}}</em>. <a href="/signout";"><small><u>logout</u></small></a>
+        {% if not valid %}
+        <br> 
         <br>
-         </p>
-        <form method="POST" action="/home/">
-          {% csrf_token %}
-          <div class="form-group">
-            <input name="body" class="form-control" placeholder="What's happening?" />
-          </div>
-          <button type="submit" formmethod="post" class="btn btn-info"> Tweet </button>
-        </form>
-      </div>
+        <h1 class="mx-auto pl-1 mt-5">Please <a href="/login";"><u>login</u></a> to see your profile: <a href="/login";">
+        {% else %}
+         <h1 class="mx-auto pl-5 mt-5"> <em>{{user}}</em> 's Tweets    <a href="/signout";"><small class="ml-1 h6"><u>  sign out</u></small></a></h1>
+        </div>
     </div>
 
   {% for tweet in tweets %}
@@ -78,6 +73,7 @@
         <p class="card-text">{{tweet.body}}</p>
       </div>
     </div>
-  {%endfor%}  
+  {%endfor%}
+      {% endif %}  
   </body>
 </html>

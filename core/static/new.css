@@ -34,3 +34,16 @@ u {
 small {
   text-align: right;
 }
+
+a[type="hashtag"] {
+  color: rgb(194, 226, 255) !important;
+}
+
+.card {
+  background-color: rgba(194, 208, 255, 0.151) !important;
+}
+
+input {
+  color: white;
+}
+

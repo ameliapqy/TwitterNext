@@ -90,9 +90,9 @@
           {% endif %}
           {%endfor%}
           {% if user in tweet.likes.all %}
-          <a class="close text-white" href="/like?id={{tweet.id}}">♥ <smaller>{{tweet.likes.count}}</smaller></a></p>
+          <a class="close text-white" href="/like?id={{tweet.id}}" onclick="location.reload()">♥ <smaller>{{tweet.likes.count}}</smaller></a></p>
           {% else %}
-          <a class="text-muted close" href="/like?id={{tweet.id}}">♥ <smaller>{{tweet.likes.count}}</smaller></a></p>
+          <a class="text-muted close" href="/like?id={{tweet.id}}" onclick="location.reload()">♥ <smaller>{{tweet.likes.count}}</smaller></a></p>
           {% endif %} 
       </div>
     </div>

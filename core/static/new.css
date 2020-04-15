@@ -43,7 +43,8 @@ a[type="hashtag"] {
   background-color: rgba(194, 208, 255, 0.151) !important;
 }
 
-input {
-  color: white;
+.form-control:valid {
+  color: white !important;
+  font-weight: 100;
 }
 

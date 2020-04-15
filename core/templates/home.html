@@ -82,7 +82,7 @@
         <p class="card-text">
           {% for element in tweet.parsed.all %}
           {% if element.isHash %}
-          <a href="/hashtag?name={{element.text}}">{{element.text}}</a> 
+          <a href="/hashtag?name={{element.text|slice:'1:'}}">{{element.text}}</a> 
           {% else %}
           {{element.text}}
           {% endif %} 

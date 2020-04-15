@@ -52,7 +52,7 @@
       </div>
     </nav>
 
-  <h1 class="text-center my-5"> All Hashtags </h1>
+  <h1 class="text-center my-5"> Tweets by Hashtag </h1>
   {% for hashtag in hashtags %}
     <h1 class="ml-5 pl-5 mt-5"> {{hashtag.name}} </h1>
     {% for tweet in hashtag.tweeted.all %}

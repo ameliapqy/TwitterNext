@@ -23,21 +23,6 @@ def profile(request):
     tweets = Tweet.objects.filter(author=request.user).order_by("created_at").reverse()
     return render(request, "profile.html", {"tweets" : tweets, "user": request.user, "valid": True})
 
-
-def getHashtags(t, request):
-    #parse hashtags and return an array with hashtags and tweets
-    names = [c for c in t.body.split() if c.startswith('#')]
-    for name in names:
-        hashtag = Hashtag.objects.filter(name=name)
-        if hashtag.exists():
-            tweets = hashtag[0].tweets
-            tweets.add(t)
-        else:
-            print("add hashtag: " + name)
-            h1 = Hashtag(name=name)
-            h1.save()
-            h1.tweets.add(t)
-
 def parseTweet(currTweet, request):
     text = currTweet.body
     i = 0
@@ -51,7 +36,6 @@ def parseTweet(currTweet, request):
                 char = text[i]
             if(char != ' '):
                 hashName += char
-            # print("[" + hashName + "]")
             parsedText=TextPair.objects.create(text=hashName, isHash=True, belongTo=currTweet)
             currTweet.parsed.add(parsedText)
             #create/modify hashtag
@@ -71,7 +55,6 @@ def parseTweet(currTweet, request):
                 char = text[i]
             if(char != '#'):
                 bodyName += char
-            # print("[" + bodyName + "]")
             parsedText = TextPair.objects.create(text=bodyName, isHash=False, belongTo=currTweet)
             currTweet.parsed.add(parsedText)
         if i == len(text)-1:
@@ -84,12 +67,19 @@ def hashtagAll(request):
     return render(request, "hashtag.html", {"hashtags" : hashtags})
 
 def hashtag(request):
-    hashtags = Hashtag.objects.filter(name=request.GET['name'])
-    if hashtags.exists():
-        print(hashtags[0].name)
+    print("start")
+    name = request.GET.get('name', '')
+    if name is '':
+        hashtags = Hashtag.objects.all()
+        return render(request, "hashtag.html", {"hashtags" : hashtags})
     else:
-        print("cannot find!")
-    return render(request, "hashtag.html", {"hashtags" : hashtags})
+        wantName = '#' + name
+        print("name:" + wantName)
+        hashtags = Hashtag.objects.filter(name=wantName)
+        if hashtags.exists():
+            return render(request, "hashtag.html", {"hashtags" : hashtags})
+
+    
 
 def delete(request):
     tweet = Tweet.objects.get(id=request.GET['id'])

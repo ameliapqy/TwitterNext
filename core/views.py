@@ -61,8 +61,6 @@ def parseTweet(currTweet, request):
         if i == len(text)-1:
             break
 
-
-
 def hashtagAll(request):
     hashtags = Hashtag.objects.all()
     return render(request, "hashtag.html", {"hashtags" : hashtags})
@@ -93,9 +91,9 @@ def delete(request):
     return redirect("/home/")
 
 def like(request):
-    if request.user == 'AnonymousUser':
+    if str(request.user)== 'AnonymousUser':
         tweets = Tweet.objects.order_by("created_at").reverse()
-        return render(request, "home.html", {"tweets" : tweets, "user": request.user, "valid": False})
+        return render(request, "home.html", {"tweets" : tweets, "valid": False})
     tweet = Tweet.objects.get(id=request.GET['id'])
     if request.user not in tweet.likes.all():
         tweet.likes.add(request.user)

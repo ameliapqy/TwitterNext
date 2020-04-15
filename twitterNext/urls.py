@@ -29,7 +29,7 @@ urlpatterns = [
     path('profile/', profile, name='profile'),
     path('delete/', delete, name='home'),
     path('deletep/', deletep, name='home'),
-    path('hashtagp/', hashtag, name='hashtag'),
-    path('hashtag/', hashtagAll, name='hashtag'),
+    path('hashtag/', hashtag, name='hashtag'),
+    path('hashtagAll/', hashtagAll, name='hashtag'),
     path('like/', like, name='home')
 ]

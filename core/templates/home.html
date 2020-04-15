@@ -42,7 +42,7 @@
             <a class="nav-link" href="/profile">Profile</a>
           </li>
           <li class="nav-item">
-             <a class="nav-link" href="/hashtag">Hashtag</a>
+             <a class="nav-link" href="/hashtagAll">Hashtag</a>
           </li>
            <li class="nav-item">
             <a class="nav-link" href="/signout">Signout</a>
@@ -79,7 +79,15 @@
       </h6>
       <div class="card-body">
         <!-- parse hashtag --> 
-        <p class="card-text">{{tweet.body}} <a class="text-muted close" href="/like?id={{tweet.id}}"><small>like</small></a> </p>
+        <p class="card-text">
+          {% for element in tweet.parsed.all %}
+          {% if element.isHash %}
+          <a href="/hashtag?name={{element.text}}">{{element.text}}</a> 
+          {% else %}
+          {{element.text}}
+          {% endif %} 
+          {%endfor%}  
+          <a class="text-muted close" href="/like?id={{tweet.id}}"><small>like</small></a> </p>
       </div>
     </div>
   {%endfor%}  

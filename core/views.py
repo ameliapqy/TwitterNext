@@ -68,14 +68,12 @@ def hashtagAll(request):
     return render(request, "hashtag.html", {"hashtags" : hashtags})
 
 def hashtag(request):
-    print("start")
     name = request.GET.get('name', '')
     if name is '':
         hashtags = Hashtag.objects.all()
         return render(request, "hashtag.html", {"hashtags" : hashtags})
     else:
         wantName = '#' + name
-        print("name:" + wantName)
         hashtags = Hashtag.objects.filter(name=wantName)
         if hashtags.exists():
             return render(request, "hashtag.html", {"hashtags" : hashtags})
@@ -95,11 +93,14 @@ def delete(request):
     return redirect("/home/")
 
 def like(request):
+    if request.user == 'AnonymousUser':
+        tweets = Tweet.objects.order_by("created_at").reverse()
+        return render(request, "home.html", {"tweets" : tweets, "user": request.user, "valid": False})
     tweet = Tweet.objects.get(id=request.GET['id'])
-    if request.user not in tweet.likes:
+    if request.user not in tweet.likes.all():
         tweet.likes.add(request.user)
     else:
-        tweet.likes.delete(request.user)
+        tweet.likes.remove(request.user)
     return redirect("/home/")
 
 def deletep(request):

@@ -56,14 +56,15 @@
     <a class="text-center ml-1 h6"href="/hashtagAll" type="hashtag">Go to all #Hashtags</a>
   </h1>
 
-  {% for hashtag in hashtags %}
+  {% for hashtag in hashtags reversed%}
     <h1 class="ml-5 pl-5 mt-5"> {{hashtag.name}} </h1>
-    {% for tweet in hashtag.tweeted.all %}
+    {% for tweet in hashtag.tweeted.all reversed %}
     <div class="card mx-auto text-white mb-3" style="width: 70%;">
 
-      <h6 class="card-header font-weight-light mb-0 align-text-bottom">
-        <b class = "font-weight-bold">{{hashtag.name}}   </b><small class="text-muted">by: {{tweet.author}}</small>
-        <a class="close text-muted" href="/delete?id={{tweet.id}}"><small>x</small></a>
+      <h6 class="card-header font-weight-light mb-0 align-text-bottom"> 
+        <b class = "font-weight-bold">{{hashtag.name}}   </b>
+        <small class="text-muted"> @{{tweet.author}} · {{tweet.created_at}}
+        <div class="clearfix"></div></small>
       </h6>
       <div class="card-body">
         <p class="card-text">
@@ -73,8 +74,7 @@
           {% else %}
           {{element.text}}
           {% endif %} 
-          {%endfor%}  
-          <a class="text-muted close" href="/like?id={{tweet.id}}"><small>like</small></a> </p>
+          {%endfor%}
       </div>
     </div>
   {%endfor%}  

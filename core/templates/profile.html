@@ -66,7 +66,7 @@
     <div class="card mx-auto text-white mb-5" style="width: 70%">
 
       <h6 class="card-header font-weight-light mb-0 align-text-bottom">
-        <b class = "font-weight-bold">{{tweet.author}}   </b><small class="text-muted">at: {{tweet.created_at}}</small>
+        <b class = "font-weight-bold">@{{tweet.author}}   </b><small class="text-muted"> · {{tweet.created_at}}</small>
         <a class="close text-muted" href="/deletep?id={{tweet.id}}"><small>x</small></a>
       </h6>
       <div class="card-body">
@@ -79,7 +79,6 @@
           {{element.text}}
           {% endif %} 
           {%endfor%}  
-          <a class="text-muted close" href="/like?id={{tweet.id}}"><small>like</small></a> </p>
       </div>
     </div>
   {%endfor%}  

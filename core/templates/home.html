@@ -76,7 +76,7 @@
     <div class="card mx-auto text-white bg-dark mb-5" style="width: 70%">
 
       <h6 class="card-header font-weight-light mb-0 align-text-bottom">
-        <b class = "font-weight-bold">{{tweet.author}}   </b><small class="text-muted">at: {{tweet.created_at}}</small>
+        <b class = "font-weight-bold">@{{tweet.author}}   </b><small class="text-muted"> · {{tweet.created_at}}</small>
         <a class="close text-muted" href="/delete?id={{tweet.id}}"><small>x</small></a>
       </h6>
       <div class="card-body">
@@ -84,12 +84,16 @@
         <p class="card-text">
           {% for element in tweet.parsed.all %}
           {% if element.isHash %}
-          <a href="/hashtag?name={{element.text|slice:'1:'}}" type="hashtag">{{element.text}}</a> 
+          <a href="/hashtag?name={{element.text|slice:'1:'}}" type="hashtag">{{element.text}}</a>
           {% else %}
           {{element.text}}
+          {% endif %}
+          {%endfor%}
+          {% if user in tweet.likes.all %}
+          <a class="close text-white" href="/like?id={{tweet.id}}">♥ <smaller>{{tweet.likes.count}}</smaller></a></p>
+          {% else %}
+          <a class="text-muted close" href="/like?id={{tweet.id}}">♥ <smaller>{{tweet.likes.count}}</smaller></a></p>
           {% endif %} 
-          {%endfor%}  
-          <a class="text-muted close" href="/like?id={{tweet.id}}"><small>like</small></a> </p>
       </div>
     </div>
   {%endfor%}  

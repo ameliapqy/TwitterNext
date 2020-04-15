@@ -1,104 +1,115 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <meta charset="utf-8" />
 
-    <title>TwitterNext</title>
-    <meta name="description" content="Twitter Clone" />
-    <meta name="author" content="PQY" />
-    {% load static %}
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <meta charset="utf-8" />
 
-    <link rel="stylesheet" type="text/css" href="{% static 'new.css' %}">
-  </head>
+  <title>TwitterNext</title>
+  <meta name="description" content="Twitter Clone" />
+  <meta name="author" content="PQY" />
+  {% load static %}
 
-  <body class="black">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
-      <a class="navbar-brand active" href="/home">TwitterNext</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <link rel="stylesheet" type="text/css" href="{% static 'new.css' %}">
+</head>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/home">
-              Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/profile">Profile</a>
-          </li>
-          <li class="nav-item">
-             <a class="nav-link" href="/hashtagAll">Hashtag</a>
-          </li>
-           <li class="nav-item">
-            <a class="nav-link" href="/signout">Signout</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+<body class="black">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+    <a class="navbar-brand active" href="/home">TwitterNext</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <div class="jumbotron bg-transparent">
-      <div class="mx-auto dark" style="width: 70%; border-radius: 0px;">
-        <p>
-        Hi lovely, you are loggined as: <em>{{user}}</em>. <a href="/signout";"><small><u>logout</u></small></a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/home">
+            Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/hashtagAll">Hashtag</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/signout">Signout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="jumbotron bg-transparent">
+    <div class="mx-auto dark" style="width: 70%; border-radius: 0px;">
+      <p>
+        Hi lovely, you are loggined as: <em>{{user}}</em>. <a href="/signout" ;"><small><u>logout</u></small></a>
         <br>
         {% if not valid %}
-        <small><em class="text-secondary">please login before you tweet: </em></small> <a href="/login";"><small><u>login</u></small></a>
+        <small><em class="text-secondary">please login before you tweet: </em></small> <a href="/login"
+          ;"><small><u>login</u></small></a>
         {% endif %}
-         </p>
-        <form method="POST" action="/home/">
-          {% csrf_token %}
-          <div class="mr-auto pull-right">
+      </p>
+      <form method="POST" action="/home/">
+        {% csrf_token %}
+        <div class="mr-auto pull-right">
           <div class="form-group  pull-right">
-            <textarea name="body" class="form-control" placeholder="What's happening?" rows="3" 
-            style="background-color: rgba(187, 188, 255, 0.164);
+            <textarea name="body" class="form-control" placeholder="What's happening?" rows="3" style="background-color: rgba(187, 188, 255, 0.164);
             border-color: transparent;"></textarea>
           </div>
-          <button type="submit" formmethod="post" class="btn btn-info" 
-          style="background-color: #3988ffa4;
+          <button type="submit" formmethod="post" class="btn btn-info" style="background-color: #3988ffa4;
                  border-width: 0px;
                  border-radius: 24px;
                  min-width: 75px;"> <strong>Tweet</strong> </button>
-          </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
+  </div>
 
   {% for tweet in tweets %}
-    <div class="card mx-auto text-white bg-dark mb-5" style="width: 70%">
+  <div class="card mx-auto text-white bg-dark mb-5" style="width: 70%">
 
-      <h6 class="card-header font-weight-light mb-0 align-text-bottom">
-        <b class = "font-weight-bold">@{{tweet.author}}   </b><small class="text-muted"> · {{tweet.created_at}}</small>
-        <a class="close text-muted" href="/delete?id={{tweet.id}}"><small>x</small></a>
-      </h6>
-      <div class="card-body">
-        <!-- parse hashtag --> 
-        <p class="card-text">
-          {% for element in tweet.parsed.all %}
-          {% if element.isHash %}
-          <a href="/hashtag?name={{element.text|slice:'1:'}}" type="hashtag">{{element.text}}</a>
-          {% else %}
-          {{element.text}}
-          {% endif %}
-          {%endfor%}
-          {% if user in tweet.likes.all %}
-          <a class="close text-white" href="/like?id={{tweet.id}}" onclick="location.reload()">♥ <smaller>{{tweet.likes.count}}</smaller></a></p>
-          {% else %}
-          <a class="text-muted close" href="/like?id={{tweet.id}}" onclick="location.reload()">♥ <smaller>{{tweet.likes.count}}</smaller></a></p>
-          {% endif %} 
-      </div>
+    <h6 class="card-header font-weight-light mb-0 align-text-bottom">
+      <b class="font-weight-bold">@{{tweet.author}} </b><small class="text-muted"> · {{tweet.created_at}}</small>
+      <a class="close text-muted" href="/delete?id={{tweet.id}}"><small>x</small></a>
+    </h6>
+    <div class="card-body">
+      <!-- parse hashtag -->
+      <p class="card-text">
+        {% for element in tweet.parsed.all %}
+        {% if element.isHash %}
+        <a href="/hashtag?name={{element.text|slice:'1:'}}" type="hashtag">{{element.text}}</a>
+        {% else %}
+        {{element.text}}
+        {% endif %}
+        {%endfor%}
+        {% if user in tweet.likes.all %}
+        <a class="close text-white" href="/like?id={{tweet.id}}" onclick="location.reload()">♥ <smaller>
+            {{tweet.likes.count}}</smaller></a></p>
+      {% else %}
+      <a class="text-muted close" href="/like?id={{tweet.id}}" onclick="location.reload()">♥ <smaller>
+          {{tweet.likes.count}}</smaller></a></p>
+      {% endif %}
     </div>
-  {%endfor%}  
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
+  </div>
+  {%endfor%}
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

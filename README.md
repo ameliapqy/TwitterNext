@@ -4,10 +4,6 @@
 
 TwitterNext is an individual project that is a website with Twitter’s functionality and a futuristic look. Visitors can create an account, sign in, create tweets that support hashtagging, delete tweets, and have an individual profile page. Django is used for the main framework.
 
-### Demo
-
-![](Demo.gif)
-
 ## Getting Started
 
 ### Prerequisites
@@ -47,7 +43,7 @@ All tweets support hashtags, and if the user clicks the hashtag within a tweet, 
 
 /hashtag page contains all hashtags with corresponding tweets below. A tweet can have multiple hashtags
 
-*(error handling)if you clicked on this page without logging in, instead of showing tweets/empty page, it will tell you to log in to see your profile.*
+*(error handling)if you clicked on this page without GET request, it will redirect to a hidden url to display all the hashtags*
  
 ### /Profile
 

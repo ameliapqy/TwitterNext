@@ -9,7 +9,7 @@
     <meta name="author" content="PQY" />
     {% load static %}
 
-    <link rel="stylesheet" type="text/css" href="{% static 'about.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'new.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap" rel="stylesheet">
    
     <!-- bootstrap -->
@@ -21,7 +21,7 @@
     />
   </head>
 
-  <body class="black">
+  <body class="aboutBkg">
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
       <a class="navbar-brand" href="/home">TwitterNext</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,11 +54,20 @@
     </nav>
 
 
-    <div class="jumbotron bg-transparent">
-      <div class="mx-auto dark" style="width: 50%;">
-        <h1 class="display-3 text-white">Twitter Next</h1>
+    <div class="jumbotron mx-5" 
+    style="border-radius: 0px;
+           background-color: rgba(0, 0, 0, 0.315);
+    ">
+      <div class="mx-auto dark" style="width: 70%;">
+        <h1 class="display-3 text-white" type="about">Twitter Next</h1>
         <p class="lead text-white">
-          The Future of Twitter. Have fun Tweeting!
+          Twitter is an online news and social networking site where people communicate in short messages called tweets. Tweeting is posting short messages for anyone who follows you on Twitter, with the hope that your messages are useful and interesting to someone in your audience.
+          <br>
+          TwitterNext is a clone of Twitter’s functionality with a futuristic look. User is able to sign in, create tweets that support hash tagging, delete tweet, and have individual profile page. The main framework is built on Django.
+          <br>
+          Have fun Tweeting!
+          <br>
+          <h5> Developed & Designed by: Qingyuan Peng</h5>
         </p>
       </div>
     </div>

@@ -10,6 +10,7 @@ def home(request):
             tweet = Tweet.objects.create(body=body, author=request.user)
             parseTweet(tweet, request)
         else:
+            tweets = Tweet.objects.order_by("created_at").reverse()
             return render(request, "home.html", {"tweets" : tweets, "user": request.user, "valid": False})
     tweets = Tweet.objects.order_by("created_at").reverse()
     return render(request, "home.html", {"tweets" : tweets, "user": request.user, "valid": True})
@@ -107,7 +108,7 @@ def deletep(request):
         tweet.delete()
     #check if hashtag exist
         for hashtag in Hashtag.objects.all():
-            if not hashtag.tweets.exists():
+            if not hashtag.tweeted.exists():
                 hashtag.delete()
     else:
         print("no authorization!")

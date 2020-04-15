@@ -13,10 +13,29 @@
 }
 
 
+.hashtagBkg{
+    background-image: url("water.jpg");
+    background-size: 100%;
+    background-repeat: repeat;
+    background-color: black;
+}
+
+
+
 h1 {
   color: white !important;
   opacity: 100%;
   font-weight: 100 !important;
+}
+
+h5 {
+  color: white !important;
+  opacity: 70% !important;
+  font-size: smaller !important;
+  font-weight: 100 !important;
+  font-style: oblique;
+  text-align: right;
+  text-align: bottom;
 }
 
 p {
@@ -26,7 +45,7 @@ p {
 }
 
 u {
-  color: rgb(194, 194, 194) !important;
+  color: rgb(226, 226, 226) !important;
   opacity: 100%;
   font-weight: 100 !important;
 }
@@ -37,10 +56,15 @@ small {
 
 a[type="hashtag"] {
   color: rgb(194, 226, 255) !important;
+  font-weight: 100;
+}
+
+a{
+  font-weight: 100 !important;
 }
 
 .card {
-  background-color: rgba(194, 208, 255, 0.151) !important;
+  background-color: rgba(194, 208, 255, 0.15) !important;
 }
 
 .form-control:valid {
@@ -48,3 +72,21 @@ a[type="hashtag"] {
   font-weight: 100;
 }
 
+a.navbar-brand {
+  font-family: 'Megrim', cursive !important;
+  font-stretch: narrower !important;
+}
+
+.aboutBkg{
+    background-image: url("bkg.jpg") !important;
+    background-size: 100%;
+    background-repeat: repeat;
+    background-color: black;
+}
+
+h1[type="about"] {
+  color: white !important;
+  opacity: 100%;
+  font-weight: 100 !important;
+  font-family: 'Megrim', cursive !important;
+}

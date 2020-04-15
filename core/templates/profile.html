@@ -63,17 +63,26 @@
     </div>
 
   {% for tweet in tweets %}
-    <div class="card mx-auto text-white bg-dark mb-5" style="width: 70%;">
+    <div class="card mx-auto text-white mb-5" style="width: 70%">
 
       <h6 class="card-header font-weight-light mb-0 align-text-bottom">
         <b class = "font-weight-bold">{{tweet.author}}   </b><small class="text-muted">at: {{tweet.created_at}}</small>
         <a class="close text-muted" href="/deletep?id={{tweet.id}}"><small>x</small></a>
       </h6>
       <div class="card-body">
-        <p class="card-text">{{tweet.body}}</p>
+        <!-- parse hashtag --> 
+        <p class="card-text">
+          {% for element in tweet.parsed.all %}
+          {% if element.isHash %}
+          <a href="/hashtag?name={{element.text|slice:'1:'}}" type="hashtag">{{element.text}}</a> 
+          {% else %}
+          {{element.text}}
+          {% endif %} 
+          {%endfor%}  
+          <a class="text-muted close" href="/like?id={{tweet.id}}"><small>like</small></a> </p>
       </div>
     </div>
-  {%endfor%}
+  {%endfor%}  
       {% endif %}  
   </body>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

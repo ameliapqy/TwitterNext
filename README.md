@@ -15,8 +15,9 @@ have Python3 installed
 navigate to the project folder in terminal and type the following to run the website with local host 8000.
 
 ```
-python3 manage.py runserver
+python manage.py runserver
 ```
+(use python3 if you have that installed)
 
 ## Pages & Functionalities
 
